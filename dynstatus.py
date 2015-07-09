@@ -31,6 +31,7 @@ def run_plugins():
     best_location = location.get_matching_config(config)
     logging.info('Best location: ' + best_location['name'])
     plugins_folder = os.path.expanduser(config.dynstatus['plugins_path'])
+    logging.debug('Plugins path: ' + plugins_folder)
     sys.path.append(plugins_folder)
     for plugin in config.dynstatus['plugins']:
         try:
