@@ -8,7 +8,7 @@ You have to copy ```config.py``` to ```$XDG_CONFIG_HOME/dynstatus/config.py```. 
 You can use dynstatus in three different ways
 
 ### Just execute it
-Dynstatus will detect your location and run your plugins once.  
+Dynstatus will detect your location and run your plugins once. You could use this mode in the hooks of your network management tool to react to changes in your network configuration.
 ```
 user@linux$ dynstatus
 ```
