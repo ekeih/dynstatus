@@ -2,7 +2,7 @@
 Dynstatus tries to pinpoint your location based on your network configuration (WLAN, IP, ...) and enables you to run code to react to changes.
 
 ## Setup
-You have to copy ```config.py``` to ```$XDG_CONFIG_HOME/dynstatus/config.py```. Usually this will mean ```~/.config/dynstatus/config.py```. Afterwards you should modify the configuration to your needs. Make sure that ```plugins_path``` is configured correctly. The configuration should be self-explaining.
+You have to copy ```example_config.py``` to ```$XDG_CONFIG_HOME/dynstatus/config.py```. Usually this will mean ```~/.config/dynstatus/config.py```. Afterwards you should modify the configuration to your needs. Make sure that ```plugins_path``` is configured correctly. The configuration should be self-explaining.
 
 ## Operation Modes
 You can use dynstatus in three different ways
