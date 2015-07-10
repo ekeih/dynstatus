@@ -15,11 +15,11 @@ user@linux$ dynstatus
 ### Run it as a daemon
 Dynstatus will fork to background and detect your location and run your plugins periodically. The interval is configured in the ```config.py``` of dynstatus.
 ```
-user@linux$ dynstatus daemon
+user@linux$ dynstatus --daemon
 ```
 
 ### Get current status information
 Dynstatus can give you status information without running the plugins. You can ask for every location setting of your ```config.py```.
 ```
-user@linux$ dynstatus get ssid
+user@linux$ dynstatus --get ssid
 ```
