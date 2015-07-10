@@ -5,6 +5,7 @@ import sys
 import glob
 import location
 import logging
+import argparse
 
 def setup_configuration():
     logging.debug('setup configuration')
@@ -54,10 +55,15 @@ def run_daemon():
 
 
 def print_help():
-    print('TODO: Implement help!')
+    parser.print_help()
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Dynstatus tries to pinpoint your location based on your network configuration (WLAN, IP, ...) and enables you to run code to react to changes.')
+    parser.add_argument('-d','--daemon',action="store_true",dest="daemon",help='Dynstatus will fork to background and detect your location and run your plugins periodically. The interval is configured in the config.py of dynstatus.',required=False,default=False)
+    parser.add_argument('-g','--get', help='Dynstatus can give you status information without running the plugins. You can ask for every location setting of your config.py.',default='ssid',required=False)
+    args = parser.parse_args()
+
     logging.basicConfig(format='%(asctime)s: (%(levelname)s) %(message)s', datefmt='%d.%m.%Y %H:%M:%S', level=logging.DEBUG)
     logging.debug('=============================================')
     logging.debug('dynstatus v0.1')
@@ -66,21 +72,15 @@ if __name__ == '__main__':
     setup_configuration()
 
     # argparse
-    if len(sys.argv) < 2:
+    if len(sys.argv) <= 1:
         run_plugins()
-    elif len(sys.argv) == 2:
-        if sys.argv[1] == 'daemon':
-            run_daemon()
+    elif args.daemon:
+        run_daemon()
+    elif args.get:
+        best_location = location.get_matching_config(config)
+        if args.get in best_location:
+            print(best_location[args.get])
         else:
-            print_help()
-    elif len(sys.argv) == 3:
-        if sys.argv[1] == 'get':
-            best_location = location.get_matching_config(config)
-            if sys.argv[2] in best_location:
-                print(best_location[sys.argv[2]])
-            else:
-                print('Unknown value.')
-        else:
-            print_help()
+            print('Unknown value.')
     else:
         print_help()
