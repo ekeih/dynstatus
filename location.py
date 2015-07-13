@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import network
 
 DEFAULT_POINTS = 10

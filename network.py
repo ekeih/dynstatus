@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from subprocess import Popen, PIPE
 
 def get_mac_of_accesspoint():
