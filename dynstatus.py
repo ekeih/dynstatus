@@ -43,13 +43,15 @@ def run_plugins():
 
 def run_daemon():
     import time
+    import importlib
     logging.info('Running dynstatus in daemon mode.')
     interval = config.dynstatus['daemon_interval']
-    logging.debug('daemon: interval: {}'.format(interval))
+    logging.debug('daemon interval: {}'.format(interval))
     if os.fork():
         sys.exit()
     while True:
-        logging.debug('daemon: run plugins')
+        logging.debug('daemon reload config')
+        importlib.reload(config)
         run_plugins()
         time.sleep(interval)
 
