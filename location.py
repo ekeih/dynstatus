@@ -1,4 +1,6 @@
 import logging
+
+# TODO move the module in its own namespace
 import network
 
 DEFAULT_POINTS = 10

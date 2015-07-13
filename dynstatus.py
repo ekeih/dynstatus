@@ -4,8 +4,10 @@ import logging
 import os
 import sys
 import glob
-import location
 import argparse
+
+# TODO move the module in its own namespace
+import location
 
 def setup_configuration():
     config_path = os.environ.get('XDG_CONFIG_HOME')
