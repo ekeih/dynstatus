@@ -28,9 +28,20 @@ def setup_configuration():
         global config
         import config
 
+def add_global_settings(location):
+    if not 'all_locations' in config.dynstatus:
+        logging.debug('No configuration for \'all_locations\' found.')
+        return location
+    global_settings = config.dynstatus['all_locations']
+    for setting in global_settings.keys():
+        location[setting] = global_settings[setting]
+    logging.debug(location)
+    return location
+
 def run_plugins():
     logging.debug('run_plugins')
     best_location = location.get_matching_config(config)
+    best_location = add_global_settings(best_location)
     plugins_folder = os.path.expanduser(config.dynstatus['plugins_path'])
     logging.debug('Plugins path: ' + plugins_folder)
     sys.path.append(plugins_folder)
