@@ -37,6 +37,14 @@ dynstatus = {
     # will be executed in this interval (seconds).
     'daemon_interval' : 300,
 
+    # This block is optional. Settings in 'all_locations'
+    # will be added to the matching configuration block
+    # before the location is passed to the plugins.
+    'all_locations' : {
+        'status_prefix' : '',
+        'status_suffix' : ''
+    },
+
     # You _must_ have a default configuration block.
     # dynstatus will uses these values if no other
     # configuration block matches your current location.
