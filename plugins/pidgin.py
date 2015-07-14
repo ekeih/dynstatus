@@ -22,6 +22,13 @@ def __change_status(new_status, new_statustext, dbus_handler):
 def run(config):
     try:
         dbus_handler = __connect_to_pidgin()
-        __change_status(config['status'], config['statustext'], dbus_handler)
+        statustext = ''
+        if 'status_prefix' in config:
+            statustext = statustext + config['status_prefix']
+        if 'statustext' in config:
+            statustext = statustext + config['statustext']
+        if 'status_suffix' in config:
+            statustext = statustext + config['status_suffix']
+        __change_status(config['status'], statustext, dbus_handler)
     except:
         pass
